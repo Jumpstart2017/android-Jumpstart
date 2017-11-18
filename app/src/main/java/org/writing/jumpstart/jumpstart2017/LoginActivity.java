@@ -1,24 +1,24 @@
 package org.writing.jumpstart.jumpstart2017;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
-import android.widget.Button;
 import android.view.View;
-import android.content.Intent;
+import android.widget.Button;
 
-public class Homepage extends Activity {
+public class LoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_login);
 
-        Button next = (Button) findViewById(R.id.goToLogin);
+        Button next = (Button) findViewById(R.id.register);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent login = new Intent(view.getContext(), LoginActivity.class);
-                startActivity(login);
+                Intent reg = new Intent(view.getContext(), RegisterActivity.class);
+                startActivity(reg);
             }
         });
     }

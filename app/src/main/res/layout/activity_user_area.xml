@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.writing.jumpstart.jumpstart2017.Homepage">
+    tools:context="org.writing.jumpstart.jumpstart2017.UserAreaActivity">
 
-    <Button
-        android:id="@+id/goToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to login"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="417dp" />
 </android.support.constraint.ConstraintLayout>
-

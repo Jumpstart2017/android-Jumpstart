@@ -6,7 +6,7 @@
     <color name="backgroundBlue">#3fa7d6</color>
     <color name="background_material_light">#0fffffff</color>
     <color name="foreground_material_light">#3fa7d6</color>
-    <color name="accent_material_light">#f46036</color>
+    <color name="accent_material_light">#0ead69</color>
     <color name="primary_material_light">#3fa7d6</color>
     <color name="primary_dark_material_light">#372248</color>
     <color name="text_color_primary">#ffffff</color>

@@ -9,7 +9,7 @@ public class LandingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.content_layout_id);
+        setContentView(R.layout.activity_landingpage);
 
         final Button SignUpButton = findViewById(R.id.button_id);
         SignUpButton.setOnClickListener(new View.OnClickListener() {

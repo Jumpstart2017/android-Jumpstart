@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-Jumpstart.iml" filepath="$PROJECT_DIR$/android-Jumpstart.iml" />
-      <module fileurl="file://C:\Users\Andre\Documents\Jumpstart\android-Jumpstart\android-Jumpstart.iml" filepath="C:\Users\Andre\Documents\Jumpstart\android-Jumpstart\android-Jumpstart.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Andre\Documents\Jumpstart\android-Jumpstart\app\app.iml" filepath="C:\Users\Andre\Documents\Jumpstart\android-Jumpstart\app\app.iml" />
     </modules>
   </component>
 </project>

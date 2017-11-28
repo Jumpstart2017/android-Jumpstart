@@ -57,8 +57,7 @@ public class LoginActivity extends Activity {
         _logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser(_emailText.getText().toString(),
-                        _passText.getText().toString());
+                loginUser(_emailText.getText().toString(), _passText.getText().toString());
             }
         });
     }
@@ -82,17 +81,13 @@ public class LoginActivity extends Activity {
                     if (!error) {
                         String user = jObj.getJSONObject("user").getString("name");
                         // Launch User activity
-                        Intent intent = new Intent(
-                                LoginActivity.this,
-                                UserActivity.class);
-                        intent.putExtra("username", user);
-                        startActivity(intent);
+//                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+//                        intent.putExtra("username", user);
+//                        startActivity(intent);
                         finish();
                     } else {
-
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -129,5 +124,4 @@ public class LoginActivity extends Activity {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
     }
-}
 }

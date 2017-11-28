@@ -93,7 +93,7 @@ public class RegisterActivity extends Activity {
 
                     if (!error) {
                         String user = jObj.getJSONObject("firstName").getString("firstName");
-                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully registered!", Toast.LENGTH_SHORT).show();
 
                         // Launch login activity
                         Intent intent = new Intent(

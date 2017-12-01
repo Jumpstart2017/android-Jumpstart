@@ -12,7 +12,7 @@ public class LandingActivity extends Activity {
 
         setContentView(R.layout.activity_landingpage);
 
-        final Button SignUpButton = findViewById(R.id.button);
+        final Button SignUpButton = findViewById(R.id.SignUpButton);
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
@@ -21,7 +21,7 @@ public class LandingActivity extends Activity {
             }
         });
 
-        final Button TryNowButton = findViewById(R.id.button);
+        final Button TryNowButton = findViewById(R.id.TryNowButton);
         TryNowButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 Intent vids = new Intent(v.getContext(), VideoActivity.class);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.writing.jumpstart.jumpstart2017">
+    package="org.writing.jumpstart.jumpstart2017"
+    android:hardwareAccelerated="true">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,17 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Homepage">
+        <activity
+            android:name=".LandingActivity"
+            android:label="Jumpstart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".RegisterActivity"
             android:label="Register" />
-        <activity android:name=".LoginActivity" android:label="Log In"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Log In" />
+        <activity
+            android:name=".VideoActivity"
+            android:label="Videos">
+        </activity>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class LandingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -11,19 +12,19 @@ public class LandingActivity extends Activity {
 
         setContentView(R.layout.activity_landingpage);
 
-        final Button SignUpButton = findViewById(R.id.button_id);
+        final Button SignUpButton = findViewById(R.id.button);
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                Intent reg = new Intent(view.getContext(), RegisterActivity.class);
+                Intent reg = new Intent(v.getContext(), RegisterActivity.class);
                 startActivity(reg);
             }
         });
 
-        final Button TryNowButton = findViewById(R.id.button_id);
+        final Button TryNowButton = findViewById(R.id.button);
         TryNowButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                Intent vids = new Intent(view.getContext(), VideoActivity.class);
+                Intent vids = new Intent(v.getContext(), VideoActivity.class);
                 startActivity(vids);
             }
         });

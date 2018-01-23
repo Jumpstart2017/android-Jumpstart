@@ -79,10 +79,12 @@ public class LoginActivity extends Activity {
                     boolean error = jObj.getBoolean("error");
 
                     if (!error) {
-                        String user = jObj.getJSONObject("user").getString("name");
+                        String email = jObj.getJSONObject("email").getString("email");
+                        String token = jObj.getJSONObject("token").getString("token");
                         // Launch User activity
 //                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-//                        intent.putExtra("username", user);
+//                        intent.putExtra("email", email);
+//                        intent.putExtra("token", token);
 //                        startActivity(intent);
                         finish();
                     } else {

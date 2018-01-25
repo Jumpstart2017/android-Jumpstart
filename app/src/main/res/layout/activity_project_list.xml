@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="144dp"
         android:layout_gravity="center"
-        android:background="@drawable/card_edge"
+        card_view:cardBackgroundColor="@drawable/card_edge"
         card_view:cardCornerRadius="10dp"
         card_view:layout_constraintBottom_toTopOf="@+id/card_2"
         card_view:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +80,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginBottom="313dp"
+        card_view:cardBackgroundColor="@drawable/card_edge"
         card_view:cardCornerRadius="10dp"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
@@ -141,19 +142,5 @@
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
-    <FrameLayout
-        android:layout_width="98dp"
-        android:layout_height="68dp"
-        tools:layout_editor_absoluteX="305dp"
-        tools:layout_editor_absoluteY="527dp">
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@color/colorPrimary" />
-    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

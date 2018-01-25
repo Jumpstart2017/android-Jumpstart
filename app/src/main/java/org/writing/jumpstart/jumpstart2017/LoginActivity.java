@@ -34,9 +34,8 @@ public class LoginActivity extends Activity {
     private static final String URL_FOR_LOGIN = "https://XXX.XXX.X.XX/";
     ProgressDialog progressDialog;
 
-    @InjectView(R.id.email) EditText _emailText;
-    @InjectView(R.id.pass) EditText _passText;
-    @InjectView(R.id.login) TextView _logInButton;
+    private EditText _emailText;
+    private EditText _passText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +53,13 @@ public class LoginActivity extends Activity {
             }
         });
 
-        _logInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button login = (Button) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                _emailText = (EditText) view.findViewById(R.id.email);
+                _passText = (EditText) view.findViewById(R.id.pass);
                 loginUser(_emailText.getText().toString(), _passText.getText().toString());
+                startActivity(new Intent(view.getContext(), ProjectListActivity.class));
             }
         });
     }

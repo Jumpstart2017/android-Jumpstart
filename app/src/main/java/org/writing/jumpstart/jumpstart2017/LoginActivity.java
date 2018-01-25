@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.widget.Button;
@@ -56,10 +57,14 @@ public class LoginActivity extends Activity {
         Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                _emailText = (EditText) view.findViewById(R.id.email);
-                _passText = (EditText) view.findViewById(R.id.pass);
-                loginUser(_emailText.getText().toString(), _passText.getText().toString());
-                startActivity(new Intent(view.getContext(), ProjectListActivity.class));
+                LayoutInflater factory = getLayoutInflater();
+                View newView = factory.inflate(R.layout.activity_login, null);
+                _emailText = (EditText) newView.findViewById(R.id.email);
+                _passText = (EditText) newView.findViewById(R.id.pass);
+                String e = _emailText.getText().toString();
+                String p = _passText.getText().toString();
+                // loginUser(e, p);
+                startActivity(new Intent(newView.getContext(), ProjectListActivity.class));
             }
         });
     }

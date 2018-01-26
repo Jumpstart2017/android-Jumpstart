@@ -16,6 +16,4 @@
         <item name="android:textColorPrimaryInverse">@color/primary_text_material_dark</item>
         <item name="android:textColorSecondaryInverse">@color/secondary_text_material_dark</item>
     </style>
-
-    <color name="primary_material_light">#3fa7d6</color>
 </resources>

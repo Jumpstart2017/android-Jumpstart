@@ -55,16 +55,15 @@ public class LoginActivity extends Activity {
         });
 
         Button login = (Button) findViewById(R.id.login);
+        _emailText = (EditText) findViewById(R.id.email);
+        _passText = (EditText) findViewById(R.id.pass);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                LayoutInflater factory = getLayoutInflater();
-                View newView = factory.inflate(R.layout.activity_login, null);
-                _emailText = (EditText) newView.findViewById(R.id.email);
-                _passText = (EditText) newView.findViewById(R.id.pass);
                 String e = _emailText.getText().toString();
                 String p = _passText.getText().toString();
                 // loginUser(e, p);
-                startActivity(new Intent(newView.getContext(), ProjectListActivity.class));
+                Intent projectList = new Intent(view.getContext(), ProjectListActivity.class);
+                startActivity(projectList);
             }
         });
     }

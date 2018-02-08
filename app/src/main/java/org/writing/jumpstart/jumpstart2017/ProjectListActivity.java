@@ -47,8 +47,8 @@ public class ProjectListActivity extends Activity {
         a = new Project("Project 2", "11/3/2017", 60);
         projectList.add(a);
 
-        a = new Project("Project 3", "5/5/2018", 90);
-        projectList.add(a);
+//        a = new Project("Project 3", "5/5/2018", 90);
+//        projectList.add(a);
     }
     private int dpToPx(int dp) {
         Resources r = getResources();

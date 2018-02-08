@@ -10,12 +10,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="411dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
 
     </android.support.v7.widget.RecyclerView>
 

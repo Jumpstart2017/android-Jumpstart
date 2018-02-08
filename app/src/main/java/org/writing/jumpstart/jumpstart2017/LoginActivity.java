@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.widget.Button;
@@ -34,9 +35,8 @@ public class LoginActivity extends Activity {
     private static final String URL_FOR_LOGIN = "https://XXX.XXX.X.XX/";
     ProgressDialog progressDialog;
 
-    @InjectView(R.id.email) EditText _emailText;
-    @InjectView(R.id.pass) EditText _passText;
-    @InjectView(R.id.login) TextView _logInButton;
+    private EditText _emailText;
+    private EditText _passText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,16 @@ public class LoginActivity extends Activity {
             }
         });
 
-        _logInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser(_emailText.getText().toString(), _passText.getText().toString());
+        Button login = (Button) findViewById(R.id.login);
+        _emailText = (EditText) findViewById(R.id.email);
+        _passText = (EditText) findViewById(R.id.pass);
+        login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String e = _emailText.getText().toString();
+                String p = _passText.getText().toString();
+                // loginUser(e, p);
+                Intent projectList = new Intent(view.getContext(), ProjectListActivity.class);
+                startActivity(projectList);
             }
         });
     }
@@ -79,10 +85,12 @@ public class LoginActivity extends Activity {
                     boolean error = jObj.getBoolean("error");
 
                     if (!error) {
-                        String user = jObj.getJSONObject("user").getString("name");
+                        String email = jObj.getJSONObject("email").getString("email");
+                        String token = jObj.getJSONObject("token").getString("token");
                         // Launch User activity
 //                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-//                        intent.putExtra("username", user);
+//                        intent.putExtra("email", email);
+//                        intent.putExtra("token", token);
 //                        startActivity(intent);
                         finish();
                     } else {

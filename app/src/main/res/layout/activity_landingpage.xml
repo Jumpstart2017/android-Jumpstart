@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="org.writing.jumpstart.jumpstart2017.LandingActivity">
+    android:layout_height="match_parent">
+    tools:context="org.writing.jumpstart.jumpstart2017.Homepage">
 
     <TextView
         android:id="@+id/textView"
@@ -38,7 +38,7 @@
         android:text="Get Energized!"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
+        app:layout_constraintBottom_toTopOf="@+id/TryNowButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +48,10 @@
         android:id="@+id/SignUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="156dp"
         android:layout_marginStart="88dp"
         android:text="Sign Up"
+        android:backgroundTint="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/TryNowButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,10 +61,11 @@
         android:id="@+id/TryNowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="156dp"
         android:layout_marginEnd="81dp"
         android:layout_marginStart="40dp"
         android:text="Try Now!"
+        android:backgroundTint="?android:attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

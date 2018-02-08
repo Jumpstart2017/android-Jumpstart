@@ -51,11 +51,13 @@
         android:id="@+id/imageButton7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="42dp"
+        android:src="@drawable/ic_lock_black_24px"
+        app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-        android:src="@drawable/ic_lock_black_24px" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
 
     <Button
         android:id="@+id/register"

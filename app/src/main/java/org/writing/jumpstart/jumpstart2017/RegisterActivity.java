@@ -172,8 +172,8 @@ public class RegisterActivity extends Activity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 6) {
-            _passwordText.setError("Password has to be more than 6 characters");
+        if (password.isEmpty() || password.length() < 8) {
+            _passwordText.setError("Password has to be more than 8 characters");
             valid = false;
         } else {
             _passwordText.setError(null);

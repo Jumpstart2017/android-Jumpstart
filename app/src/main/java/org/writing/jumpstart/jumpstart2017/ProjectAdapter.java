@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHolder> {
 
-    private Context mContext;
+    private LayoutInflater mInflater;
     private List<Project> projectList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -26,15 +26,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
     }
 
     public ProjectAdapter(Context mContext, List<Project> projectList) {
-        this.mContext = mContext;
+        mInflater = LayoutInflater.from(mContext);
         this.projectList = projectList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_project_list, parent, false);
-
+        View itemView = mInflater.inflate(R.layout.project_list, parent, false);
         return new MyViewHolder(itemView);
     }
 

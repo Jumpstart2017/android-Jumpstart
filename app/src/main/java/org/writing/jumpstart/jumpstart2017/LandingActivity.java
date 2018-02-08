@@ -7,29 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class LandingActivity extends Activity {
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_landingpage);
-
-        final Button SignUpButton = findViewById(R.id.SignUpButton);
-        SignUpButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                Intent reg = new Intent(v.getContext(), RegisterActivity.class);
-                startActivity(reg);
-            }
-        });
-
-        final Button TryNowButton = findViewById(R.id.TryNowButton);
-        TryNowButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                Intent vids = new Intent(v.getContext(), VideoActivity.class);
-                startActivity(vids);
-            }
-        });
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

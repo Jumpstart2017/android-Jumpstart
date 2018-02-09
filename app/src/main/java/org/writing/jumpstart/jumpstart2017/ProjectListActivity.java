@@ -1,14 +1,11 @@
 package org.writing.jumpstart.jumpstart2017;
 
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
-import android.view.View;
 
 import android.app.Activity;
 
@@ -47,8 +44,8 @@ public class ProjectListActivity extends Activity {
         a = new Project("Project 2", "11/3/2017", 60);
         projectList.add(a);
 
-//        a = new Project("Project 3", "5/5/2018", 90);
-//        projectList.add(a);
+        a = new Project("Project 3", "5/5/2018", 90);
+        projectList.add(a);
     }
     private int dpToPx(int dp) {
         Resources r = getResources();

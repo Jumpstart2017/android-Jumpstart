@@ -48,42 +48,18 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         final Project project = projectList.get(position);
         holder.title.setText(project.getName());
         holder.deadline.setText(" Deadline: " + project.getDeadline());
-        holder.percent.setText(pStatus + "%");
+        holder.percent.setText(project.getDeadline() + "%");
 
         Resources res = holder.itemView.getResources();
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) holder.itemView.findViewById(R.id.progressBar);
-        mProgress.setProgress(30);   // Main Progress
+        mProgress.setProgress(pStatus);   // Main Progress
         mProgress.setSecondaryProgress(80); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
         mProgress.setProgressDrawable(drawable);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                while (pStatus < project.getPercent()) {
-                    pStatus += 1;
-
-                    handler.post(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            // TODO Auto-generated method stub
-                            mProgress.setProgress(pStatus);
-                            holder.percent.setText(pStatus + "%");
-                        }
-                    });
-                    try {
-                        // Sleep for 200 milliseconds.
-                        // Just to display the progress slowly
-                        Thread.sleep(16); //thread will take approx 3 seconds to finish,change its value according to your needs
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
+        mProgress.setProgress(project.getPercent());
+        holder.percent.setText(project.getPercent() + "%");
     }
 
     @Override

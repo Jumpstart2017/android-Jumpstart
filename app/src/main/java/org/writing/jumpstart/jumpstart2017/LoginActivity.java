@@ -1,5 +1,6 @@
 package org.writing.jumpstart.jumpstart2017;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import android.app.ProgressDialog;
@@ -20,6 +21,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -38,6 +43,8 @@ public class LoginActivity extends Activity {
     private EditText _emailText;
     private EditText _passText;
 
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,14 @@ public class LoginActivity extends Activity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
+
+        //Get Firebase auth instance
+        auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, ProjectListActivity.class));
+            finish();
+        }
 
         Button next = (Button) findViewById(R.id.register);
         next.setOnClickListener(new View.OnClickListener() {
@@ -61,75 +76,47 @@ public class LoginActivity extends Activity {
             public void onClick(View view) {
                 String e = _emailText.getText().toString();
                 String p = _passText.getText().toString();
-                // loginUser(e, p);
-                Intent projectList = new Intent(view.getContext(), ProjectListActivity.class);
-                startActivity(projectList);
+                loginUser(e, p);
             }
         });
+
+
     }
 
     private void loginUser( final String email, final String password) {
-        // Tag used to cancel the request
-        String cancel_req_tag = "login";
-        progressDialog.setMessage("Logging you in...");
-        showDialog();
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                URL_FOR_LOGIN, new Response.Listener<String>() {
 
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
-                hideDialog();
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
 
-                    if (!error) {
-                        String email = jObj.getJSONObject("email").getString("email");
-                        String token = jObj.getJSONObject("token").getString("token");
-                        // Launch User activity
-//                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-//                        intent.putExtra("email", email);
-//                        intent.putExtra("token", token);
-//                        startActivity(intent);
-                        finish();
+        //authenticate user
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    // If sign in fails, display a message to the user. If sign in succeeds
+                    // the auth state listener will be notified and logic to handle the
+                    // signed in user can be handled in the listener.
+                    // progressBar.setVisibility(View.GONE);
+                    if (!task.isSuccessful()) {
+                        // there was an error
+                        if (password.length() < 6) {
+                            _passText.setError("Password too short, enter minimum 6 characters!");
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Authentication failed, check your email and password or sign up", Toast.LENGTH_LONG).show();
+                        }
                     } else {
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, ProjectListActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting params to login url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("password", password);
-                return params;
-            }
-        };
-        // Adding request to request queue
-        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq,cancel_req_tag);
+            });
     }
 
-    private void showDialog() {
-        if (!progressDialog.isShowing())
-            progressDialog.show();
-    }
-    private void hideDialog() {
-        if (progressDialog.isShowing())
-            progressDialog.dismiss();
-    }
+//    private void showDialog() {
+//        if (!progressDialog.isShowing())
+//            progressDialog.show();
+//    }
+//    private void hideDialog() {
+//        if (progressDialog.isShowing())
+//            progressDialog.dismiss();
+//    }
 }

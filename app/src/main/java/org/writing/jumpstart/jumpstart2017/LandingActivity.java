@@ -18,7 +18,7 @@ public class LandingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landingpage);
 
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         Button next = (Button) findViewById(R.id.SignUpButton);
         next.setOnClickListener(new View.OnClickListener() {
@@ -41,8 +41,8 @@ public class LandingActivity extends Activity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
     private void updateUI(FirebaseUser user) {

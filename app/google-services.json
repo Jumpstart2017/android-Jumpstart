@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "938853250241",
+    "firebase_url": "https://jumpstart-f48ac.firebaseio.com",
+    "project_id": "jumpstart-f48ac",
+    "storage_bucket": "jumpstart-f48ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938853250241:android:dd9ac27c05037546",
+        "android_client_info": {
+          "package_name": "org.writing.jumpstart.jumpstart2017"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938853250241-bglfuah9lpts0t0abllsbvl2h52r2cha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTWQ8d0RhcJUQ0_kuKfOLggUTQuXVB6u4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.VolleyError;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,8 +31,9 @@ import butterknife.InjectView;
 public class RegisterActivity extends Activity {
 
     private static final String TAG = "RegisterActivity";
-    private static final String URL_FOR_REGISTRATION = "http://google.com";
+    private static final String URL_FOR_REGISTRATION = "https://us-central1-jumpstart-f48ac.cloudfunctions.net/register";
     ProgressDialog progressDialog;
+    private FirebaseAuth auth;
 
     @InjectView(R.id.firstName) EditText _firstNameText;
     @InjectView(R.id.lastName) EditText _lastNameText;
@@ -44,6 +46,9 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.inject(this);
+
+        //Get Firebase auth instance
+        auth = FirebaseAuth.getInstance();
 
         _submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,13 +75,34 @@ public class RegisterActivity extends Activity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        final String firstName = _firstNameText.getText().toString();
-        final String lastName = _lastNameText.getText().toString();
-        final String email = _emailText.getText().toString();
-        final String password = _passwordText.getText().toString();
+        final String firstName = _firstNameText.getText().toString().trim();
+        final String lastName = _lastNameText.getText().toString().trim();
+        final String email = _emailText.getText().toString().trim();
+        final String password = _passwordText.getText().toString().trim();
 
         // TODO: Implement your own signup logic here.
         // Tag used to cancel the request
+
+//        auth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        Toast.makeText(SignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+//                        progressBar.setVisibility(View.GONE);
+//                        // If sign in fails, display a message to the user. If sign in succeeds
+//                        // the auth state listener will be notified and logic to handle the
+//                        // signed in user can be handled in the listener.
+//                        if (!task.isSuccessful()) {
+//                            Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
+//                                    Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+//                            finish();
+//                        }
+//                    }
+//                });
+
+
         String cancel_req_tag = "register";
         showDialog();
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -98,7 +124,7 @@ public class RegisterActivity extends Activity {
                         // Launch login activity
                         Intent intent = new Intent(
                                 RegisterActivity.this,
-                                LoginActivity.class);
+                                ProjectListActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

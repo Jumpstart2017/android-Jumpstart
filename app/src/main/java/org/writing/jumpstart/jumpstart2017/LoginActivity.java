@@ -85,7 +85,6 @@ public class LoginActivity extends Activity {
 
     private void loginUser( final String email, final String password) {
 
-
         //authenticate user
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

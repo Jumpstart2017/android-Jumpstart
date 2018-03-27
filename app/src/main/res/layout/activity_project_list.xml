@@ -10,8 +10,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="411dp"
-        android:layout_height="532dp"
+        android:layout_width="wrap_content"
+        android:layout_height="531dp"
         android:background="@android:color/darker_gray">
 
     </android.support.v7.widget.RecyclerView>
@@ -20,8 +20,9 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="539dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="307dp" />
 
 </android.support.constraint.ConstraintLayout>

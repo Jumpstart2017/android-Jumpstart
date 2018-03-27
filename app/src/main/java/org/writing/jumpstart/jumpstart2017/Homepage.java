@@ -1,13 +1,14 @@
 package org.writing.jumpstart.jumpstart2017;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Application;
+import com.google.firebase.FirebaseApp;
 
-public class Homepage extends AppCompatActivity {
+
+public class Homepage extends Application {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+    public void onCreate() {
+        super.onCreate();
+        FirebaseApp.initializeApp(this);
     }
 }

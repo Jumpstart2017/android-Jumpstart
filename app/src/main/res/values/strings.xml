@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">JumpStart2017</string>
+    <string name="app_name">JUMPSTART</string>
+    <string name="title_activity_project_list">ProjectListActivity</string>
+    <string name="title_activity_projects_list">ProjectsListActivity</string>
 </resources>

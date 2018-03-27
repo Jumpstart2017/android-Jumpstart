@@ -6,20 +6,13 @@
 
     <application
         android:allowBackup="true"
-<<<<<<< HEAD
-        android:name=".Homepage"
-=======
         android:hardwareAccelerated="true"
->>>>>>> origin/realVideoPage
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-=======
         <activity android:name=".Homepage"></activity>
->>>>>>> origin/realVideoPage
         <activity
             android:name=".LandingActivity"
             android:label="Landing">

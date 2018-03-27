@@ -31,7 +31,8 @@ public class LandingActivity extends Activity {
         Button trynow = (Button) findViewById(R.id.TryNowButton);
         trynow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent trying = new Intent(view.getContext(), ProjectListActivity.class);
+                //Intent trying = new Intent(view.getContext(), ProjectListActivity.class);
+                Intent trying = new Intent(view.getContext(), VideoActivity.class);
                 startActivity(trying);
             }
         });

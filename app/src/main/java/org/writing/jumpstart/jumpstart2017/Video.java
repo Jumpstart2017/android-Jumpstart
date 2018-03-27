@@ -4,22 +4,27 @@ public class Video {
     private String title;
     private String description;
     private String url;
+    private String type;
+    private String html;
 
     public Video() {}
 
-    public Video(String title, String desc, String url) {
-        this.title = title;
+    public Video(String desc, String title, String html, String url, String type) {
+
         this.description = desc;
+        this.title = title;
+        this.html = html;
         this.url = url;
+        this.type = type;
 
     }
 
-    public String getName() {
+    public String getTitle() {
         return title;
     }
 
-    public void setName(String name) {
-        this.title = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getURL() {
@@ -33,4 +38,5 @@ public class Video {
     public void setURL(String url){
         this.url = url;
     }
+    public String getType() { return type;}
 }

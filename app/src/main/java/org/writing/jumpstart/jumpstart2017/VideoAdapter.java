@@ -56,7 +56,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder
         webSettings.setMediaPlaybackRequiresUserGesture(true);
 
         holder.vimeoVid.loadUrl(video.getURL());
-        holder.title.setText(video.getName());
+        holder.title.setText(video.getTitle());
         holder.description.setText(video.getDescription());
     }
 

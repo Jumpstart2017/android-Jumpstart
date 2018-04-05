@@ -44,9 +44,12 @@ public class VideoActivity extends Activity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String temp = "https://player.vimeo.com/video/";
                 for(int i = 1; i <= 22; i++)
                 {
                     Video vid = dataSnapshot.child("videos").child(Integer.toString(i)).getValue(Video.class);
+
+                    vid.setURL(temp + vid.getURL().substring(18));
                     videoList.add(vid);
                 }
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardRecycler);

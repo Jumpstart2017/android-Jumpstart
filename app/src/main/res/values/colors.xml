@@ -12,4 +12,8 @@
     <color name="text_color_primary">#ffffff</color>
     <color name="primary_text_material_dark">#f46036</color>
     <color name="secondary_text_material_dark">#372248</color>
+    <color name="research_blue">#414770</color>
+    <color name="writing_orange">#F46036</color>
+    <color name="revision_yellow">#FFD23F</color>
+    <color name="starting_blue">#3FA7D6</color>
 </resources>

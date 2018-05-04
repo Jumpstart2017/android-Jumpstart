@@ -1,12 +1,15 @@
 package org.writing.jumpstart.jumpstart2017;
 
-public class Video {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Video implements Parcelable {
     private String title;
     private String description;
     private String url;
     private String type;
     private String html;
-
+    private static Parcelable.Creator<Video> CREATOR;
     public Video() {}
 
     public Video(String desc, String title, String html, String url, String type) {
@@ -39,4 +42,14 @@ public class Video {
         this.url = url;
     }
     public String getType() { return type;}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }

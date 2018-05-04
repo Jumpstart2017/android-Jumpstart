@@ -10,6 +10,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
+
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder> {
@@ -17,7 +19,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder
     private LayoutInflater mInflater;
     private List<Video> videoList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends ChildViewHolder {
         public TextView title, description;
         public WebView vimeoVid;
 

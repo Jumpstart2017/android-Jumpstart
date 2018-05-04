@@ -18,6 +18,10 @@ import java.util.List;
 public class VideoActivity extends Activity {
 
     private List<Video> videoList;
+    private List<ExpandingType> typeList;
+    private List<Video> resList;
+    private List<Video> writList;
+    private List<Video> revList;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference ref = database.getReference();
     @Override
@@ -26,8 +30,13 @@ public class VideoActivity extends Activity {
         setContentView(R.layout.activity_videopage);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardRecycler);
+        typeList = new ArrayList<>();
 
         videoList = new ArrayList<>();
+        resList = new ArrayList<>();
+        writList = new ArrayList<>();
+        revList = new ArrayList<>();
+
 //        VideoAdapter adapter = new VideoAdapter(this, videoList);
 //
 //        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -41,23 +50,17 @@ public class VideoActivity extends Activity {
 
     private void prepareVideos() {
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child("videos").orderByChild("type").equalTo("Research").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(int i = 1; i <= 22; i++)
+                for(int i = 1; i <= dataSnapshot.getChildrenCount(); i++)
                 {
-                    Video vid = dataSnapshot.child("videos").child(Integer.toString(i)).getValue(Video.class);
-                    videoList.add(vid);
+                    System.out.println("in research for");
+                    Video vid = dataSnapshot.child(Integer.toString(i)).getValue(Video.class);
+                    resList.add(vid);
                 }
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardRecycler);
-                VideoAdapter adapter = new VideoAdapter(getBaseContext(), videoList);
-
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(mLayoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
+                ExpandingType type = new ExpandingType("research", resList);
+                typeList.add(type);
             }
 
             @Override
@@ -66,23 +69,56 @@ public class VideoActivity extends Activity {
 
             }
         });
-        System.out.println("video list size: " + videoList.size());
-        //System.out.println("first video url" + videoList.get(1));
-            //make API call to get Videos
-//        for(int i = 1; i <= 22; i++){
-//            String j = Integer.toString(i);
-//            Video a = new Video();
-//            videoList.add(a);
-//        }
 
-        //Video a = new Video("Video 1", "desc", "https://player.vimeo.com/video/114695683");
-        //videoList.add(a);
+        ref.child("videos").orderByChild("type").equalTo("Writing").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(int i = 1; i <= dataSnapshot.getChildrenCount(); i++)
+                {
+                    System.out.println("in writing for");
+                    Video vid = dataSnapshot.child(Integer.toString(i)).getValue(Video.class);
+                    writList.add(vid);
+                }
+                ExpandingType type = new ExpandingType("writing", writList);
+                typeList.add(type);
+            }
 
-        //a = new Video("Video 2", "wowoweewah!", "https://player.vimeo.com/video/114695683");
-        //videoList.add(a);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
 
-//        a = new Video("Video 3", "5/5/2018", 90);
-//        VideoList.add(a);
+            }
+        });
+
+        ref.child("videos").orderByChild("type").equalTo("Revision").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(int i = 1; i <= dataSnapshot.getChildrenCount(); i++)
+                {
+                    System.out.println("in revision for");
+                    Video vid = dataSnapshot.child(Integer.toString(i)).getValue(Video.class);
+                    resList.add(vid);
+                }
+                ExpandingType type = new ExpandingType("revision", resList);
+                typeList.add(type);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+
+            }
+        });
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardRecycler);
+        TypeAdapter adapter = new TypeAdapter(typeList);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
     }
 
 }

@@ -13,6 +13,7 @@
         <item name="android:colorPrimaryDark">@color/primary_dark_material_light</item>
         <item name="android:textColorSecondary">@color/backgroundBlue</item>
         <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:font">@font/karla</item>
         <item name="android:textColorPrimaryInverse">@color/primary_text_material_dark</item>
         <item name="android:textColorSecondaryInverse">@color/secondary_text_material_dark</item>
         <!--<item name="android:colorBackground">@color/background_material_light</item>-->
